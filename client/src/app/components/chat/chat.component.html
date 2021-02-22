@@ -1,0 +1,38 @@
+<div class="grid-container">
+
+    <div class="grid-item-1">
+        <div class="userName">
+            <h4 class="hi-text">Hola</h4>
+            <input [(ngModel)]="inputName" class="input-change-name" type="text">
+            <button class="btn btn-primary btn-block" (click)="changeName()">
+                CAMBIAR NOMBRE
+            </button>
+        </div>
+        <div class="usersCounter">
+            <p class="text-counter">Usuarios activos: {{usersCounter}}</p>
+        </div>
+    </div>
+    <div class="grid-item-2">
+        <div class="chat">
+            <div *ngFor="let message of myMessages">
+                <mat-card 
+                *ngIf="message.id == userChat.id"
+                class="card-user-logged">
+                    <mat-card-title class="font-bold">{{message.user}}</mat-card-title>
+                    {{message.text}}
+                </mat-card>
+                <mat-card
+                *ngIf="message.id != userChat.id"
+                class="card-extern-users">
+                    <mat-card-title class="font-bold">{{message.user}}</mat-card-title>
+                    {{message.text}}
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <div class="grid-item-3">
+        <h4 class="text-to-write">Escribe algo {{userChat.name}}...</h4>
+        <input type="text" class="input-message" (change)="myMessage()" [(ngModel)]="inputMessage">
+    </div>
+
+</div>
